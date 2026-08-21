@@ -945,13 +945,27 @@
 
     // --- DYNASTY SHOWREEL (Aura-dynastin Cinema Mode) ---
     function DynastyShowreel({ agency, onClose, initialChapter = 0 }) {
+      const getModelAge = (m) => {
+        if (m.age) return String(m.age).replace(/[^0-9]/g, '');
+        if (m.id === 'astrail-001' || m.name?.toLowerCase().includes('astrail')) return '26';
+        if (m.id === 'inga-001' || m.name?.toLowerCase().includes('inga')) return '36';
+        if (m.id === 'bodil-001' || m.name?.toLowerCase().includes('bodil')) return '21';
+        if (m.id === 'rosie-001' || m.name?.toLowerCase().includes('rosie')) return '32';
+        if (m.id === 'alita-001' || m.name?.toLowerCase().includes('alita')) return '28';
+        const match = (m.name + ' ' + (m.definition || '') + ' ' + (m.role || '')).match(/((d{2}))/);
+        if (match) return match[1];
+        return '';
+      };
+
       const chapters = useMemo(() => {
         const list = [];
         if (agency.presentationVideoUrl) {
           list.push({
             id: 'hq-intro',
-            title: agency.name,
-            subtitle: 'Officiell Agenturpresentation // HQ',
+            title: agency.name || 'Aura Agency',
+            age: '',
+            role: 'HQ Central // Officiell Agenturpresentation',
+            subtitle: 'Konceptuell Översikt & Manifest',
             description: agency.description || 'Välkommen till Aura-dynastins samlade presentationsfilm.',
             videoUrl: agency.presentationVideoUrl,
             themeColor: '#e58e26',
@@ -972,15 +986,19 @@
         sortedModels.forEach((m) => {
           const videoUrl = m.showreelVideoUrl || m.secondaryShowreelVideoUrl || (m.professions && m.professions[0]?.presentationVideoUrl);
           if (videoUrl) {
+            const ageVal = getModelAge(m);
+            const ageStr = ageVal ? ageVal + ' år' : '';
             list.push({
               id: m.id,
               title: m.name,
-              subtitle: m.role + ' • ' + (m.age || '26') + ' år',
+              age: ageStr,
+              role: m.role || 'Modell',
+              subtitle: ageStr ? m.role + ' • ' + ageStr : (m.role || 'Modell'),
               description: m.definition || '',
               videoUrl: videoUrl,
               themeColor: m.themeColor || '#fbbf24',
               avatarUrl: m.themeImageUrl || m.logoUrl || '',
-              badge: m.coreValues?.[0] || 'Aktiv Modell'
+              badge: m.name + (ageVal ? ' (' + ageVal + ')' : '')
             });
           }
         });
@@ -990,6 +1008,7 @@
       const [currentIdx, setCurrentIdx] = useState(initialChapter);
       const [isPlaying, setIsPlaying] = useState(true);
       const [isMuted, setIsMuted] = useState(false);
+      const [ambientGlow, setAmbientGlow] = useState(true);
       const [progress, setProgress] = useState(0);
       const [duration, setDuration] = useState(0);
       const [currentTime, setCurrentTime] = useState(0);
@@ -1091,10 +1110,21 @@
 
       return (
         <div className="fixed inset-0 z-[150] bg-[#030407] text-white flex flex-col justify-between overflow-hidden select-none">
+          {/* Dynamic Ambient Spotlight matching model theme */}
+          <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            {ambientGlow && (
+              <div 
+                className={"absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full blur-[160px] transition-all duration-1000 " + (isPlaying ? 'opacity-50 scale-105' : 'opacity-25 scale-95')}
+                style={{ backgroundColor: currentChapter.themeColor || '#e58e26' }}
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#030407] via-transparent to-[#030407]/90" />
+          </div>
+
           {/* Top Header */}
           <div className="relative z-30 flex items-center justify-between p-4 md:p-6 bg-gradient-to-b from-black/90 via-black/50 to-transparent">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)] flex-shrink-0">
                 <Icon name="film" className="w-5 h-5 md:w-6 md:h-6" />
               </div>
               <div>
@@ -1106,16 +1136,35 @@
                     Kapitel {currentIdx + 1} av {chapters.length}
                   </span>
                 </div>
-                <h1 className="text-lg md:text-2xl font-black uppercase italic tracking-tighter text-white drop-shadow-md">
-                  Familje-Showreel // {currentChapter.title}
-                </h1>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <h1 className="text-lg md:text-2xl font-black uppercase italic tracking-tighter text-white drop-shadow-md">
+                    {currentChapter.title}
+                  </h1>
+                  {currentChapter.age && (
+                    <span className="text-[11px] md:text-xs font-black not-italic px-2 py-0.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                      {currentChapter.age}
+                    </span>
+                  )}
+                  <span className="text-xs font-normal text-slate-400 not-italic hidden sm:inline">
+                    // {currentChapter.role}
+                  </span>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
+              <button 
+                onClick={() => setAmbientGlow(g => !g)}
+                className={"hidden sm:flex items-center gap-2 px-3 py-2 rounded-2xl border transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer " + (ambientGlow ? 'bg-amber-950/60 border-amber-500/50 text-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.25)]' : 'bg-black/60 border-white/15 text-slate-400 hover:text-white')}
+                title="Växla Ambient Glow biografbelysning"
+              >
+                <Icon name="sparkles" className="w-3.5 h-3.5 text-amber-400" />
+                <span>{ambientGlow ? 'Ambient På' : 'Ambient Av'}</span>
+              </button>
+
               <button
                 onClick={() => setShowPlaylist(p => !p)}
-                className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 hover:border-amber-400 text-slate-200 hover:text-white transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer"
+                className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 hover:border-amber-400 text-slate-200 hover:text-white transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer"
               >
                 <Icon name="layers" className="w-3.5 h-3.5 text-amber-400" />
                 <span>Spellista ({chapters.length})</span>
@@ -1123,15 +1172,15 @@
 
               <button
                 onClick={() => setIsMuted(prev => !prev)}
-                className={"flex items-center gap-2 px-4 py-2 rounded-2xl backdrop-blur-md border transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer " + (isMuted ? 'bg-red-950/70 border-red-500/50 text-red-200' : 'bg-black/60 border-white/15 text-emerald-300 hover:border-emerald-400')}
+                className={"flex items-center gap-2 px-3.5 md:px-4 py-2 rounded-2xl backdrop-blur-md border transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer " + (isMuted ? 'bg-red-950/70 border-red-500/50 text-red-200' : 'bg-black/60 border-white/15 text-emerald-300 hover:border-emerald-400')}
               >
                 <Icon name={isMuted ? "volumeX" : "volume2"} className="w-4 h-4" />
-                <span>{isMuted ? 'Ljud Av (M)' : 'Ljud På'}</span>
+                <span>{isMuted ? 'Ljud Av' : 'Ljud På'}</span>
               </button>
 
               <button
                 onClick={onClose}
-                className="flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-2xl bg-red-950/80 border border-red-500/60 hover:bg-red-900 text-red-200 hover:text-white transition-all shadow-[0_0_25px_rgba(239,68,68,0.35)] font-black text-[11px] uppercase tracking-widest cursor-pointer"
+                className="flex items-center gap-1.5 md:gap-2 px-3.5 md:px-5 py-2 md:py-2.5 rounded-2xl bg-red-950/80 border border-red-500/60 hover:bg-red-900 text-red-200 hover:text-white transition-all shadow-[0_0_25px_rgba(239,68,68,0.35)] font-black text-[11px] uppercase tracking-widest cursor-pointer"
               >
                 <Icon name="x" className="w-4 h-4 text-red-400" />
                 <span>Stäng</span>
@@ -1139,11 +1188,14 @@
             </div>
           </div>
 
-          {/* Main Video Viewport */}
-          <div className="relative flex-1 flex items-center justify-center p-2 md:p-6 overflow-hidden">
+          {/* Main Video Viewport - Clean & Free of Obstructing Overlays */}
+          <div className="relative flex-1 flex flex-col items-center justify-center p-2 md:p-6 overflow-hidden z-10">
             <div 
               onClick={togglePlay} 
-              className="relative w-full max-w-6xl aspect-video rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.95)] bg-black cursor-pointer group"
+              className="relative w-full max-w-6xl aspect-video rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.95)] bg-black cursor-pointer group"
+              style={ambientGlow ? {
+                boxShadow: '0 0 70px ' + (currentChapter.themeColor || '#e58e26') + '40, 0 25px 50px -12px rgba(0, 0, 0, 0.9)'
+              } : undefined}
             >
               <video
                 ref={videoRef}
@@ -1156,23 +1208,11 @@
 
               {!isPlaying && (
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-xs">
-                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-amber-500/90 text-black flex items-center justify-center shadow-[0_0_50px_rgba(245,158,11,0.6)] group-hover:scale-110 transition-transform">
-                    <Icon name="play" className="w-8 h-8 md:w-10 md:h-10 ml-1" />
+                  <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-amber-500/90 text-black flex items-center justify-center shadow-[0_0_50px_rgba(245,158,11,0.6)] group-hover:scale-110 transition-transform">
+                    <Icon name="play" className="w-7 h-7 md:w-10 md:h-10 ml-1" />
                   </div>
                 </div>
               )}
-
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between pointer-events-none">
-                <div className="bg-black/75 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/15 max-w-xl">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: currentChapter.themeColor }}>
-                      {currentChapter.badge}
-                    </span>
-                    <span className="text-[10px] font-semibold text-slate-400">• {currentChapter.subtitle}</span>
-                  </div>
-                  <h2 className="text-xl md:text-2xl font-black uppercase italic tracking-tight text-white">{currentChapter.title}</h2>
-                </div>
-              </div>
             </div>
 
             {/* Slide-out Playlist Drawer */}
