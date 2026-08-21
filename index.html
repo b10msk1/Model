@@ -277,6 +277,7 @@
       const [current, setCurrent] = useState(initialSlide);
       const [isPlaying, setIsPlaying] = useState(true);
       const [isMuted, setIsMuted] = useState(false);
+      const [isAudioBlocked, setIsAudioBlocked] = useState(false);
       const [isAudioFading, setIsAudioFading] = useState(false);
       const [progress, setProgress] = useState(0);
       const audioRef = useRef(null);
@@ -284,6 +285,48 @@
 
       const slide = slides[current] || slides[0];
       const isVideoSlide = slide && (slide.type === 'SHOWREEL' || slide.type === 'VIDEO');
+
+      const setSafeVolume = (vol) => {
+        if (!audioRef.current) return;
+        try {
+          audioRef.current.volume = Math.max(0, Math.min(1, vol));
+        } catch(e) {}
+      };
+
+      const ensureAudioPlaying = () => {
+        const audio = audioRef.current;
+        if (!audio || !model.keynoteAudioUrl || isMuted) return;
+        if (isVideoSlide) {
+          setSafeVolume(0);
+        }
+        if (audio.paused) {
+          audio.play().then(() => {
+            setIsAudioBlocked(false);
+          }).catch(e => {
+            setIsAudioBlocked(true);
+          });
+        } else {
+          setIsAudioBlocked(false);
+        }
+      };
+
+      // Immediate play on mount
+      useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio || !model.keynoteAudioUrl) return;
+
+        if (isVideoSlide) {
+          setSafeVolume(0);
+        } else {
+          setSafeVolume(0.1);
+        }
+
+        audio.play().then(() => {
+          setIsAudioBlocked(false);
+        }).catch(e => {
+          setIsAudioBlocked(true);
+        });
+      }, [model.keynoteAudioUrl]);
 
       // Smooth 2-second Audio Fade-In & Fade-Out Controller
       useEffect(() => {
@@ -295,25 +338,28 @@
           fadeIntervalRef.current = null;
         }
 
-        const shouldPlay = isPlaying && !isMuted && !isVideoSlide;
+        const shouldHearMusic = isPlaying && !isMuted && !isVideoSlide;
         const FADE_DURATION = 2000;
-        const STEP_TIME = 50;
+        const STEP_TIME = 40;
         const step = STEP_TIME / FADE_DURATION;
 
-        if (shouldPlay) {
+        if (shouldHearMusic) {
           setIsAudioFading(true);
           if (audio.paused) {
-            audio.volume = 0;
-            audio.play().catch(e => console.log('Audio autoplay blocked', e));
+            audio.play().then(() => {
+              setIsAudioBlocked(false);
+            }).catch(e => {
+              setIsAudioBlocked(true);
+            });
           }
 
           fadeIntervalRef.current = setInterval(() => {
             if (!audioRef.current) return;
             const currentVol = audioRef.current.volume;
-            if (currentVol < 0.98) {
-              audioRef.current.volume = Math.min(1, currentVol + step);
+            if (currentVol < 0.96) {
+              setSafeVolume(currentVol + step);
             } else {
-              audioRef.current.volume = 1;
+              setSafeVolume(1.0);
               setIsAudioFading(false);
               if (fadeIntervalRef.current) {
                 clearInterval(fadeIntervalRef.current);
@@ -322,16 +368,15 @@
             }
           }, STEP_TIME);
         } else {
-          if (!audio.paused && audio.volume > 0.05) {
+          if (isVideoSlide) {
             setIsAudioFading(true);
             fadeIntervalRef.current = setInterval(() => {
               if (!audioRef.current) return;
               const currentVol = audioRef.current.volume;
-              if (currentVol > 0.08) {
-                audioRef.current.volume = Math.max(0, currentVol - step * 1.5);
+              if (currentVol > 0.05) {
+                setSafeVolume(currentVol - step * 2);
               } else {
-                audioRef.current.volume = 0;
-                audioRef.current.pause();
+                setSafeVolume(0);
                 setIsAudioFading(false);
                 if (fadeIntervalRef.current) {
                   clearInterval(fadeIntervalRef.current);
@@ -339,10 +384,29 @@
                 }
               }
             }, STEP_TIME);
-          } else {
-            audio.volume = 0;
-            audio.pause();
-            setIsAudioFading(false);
+          } else if (!isPlaying || isMuted) {
+            if (!audio.paused && audio.volume > 0.05) {
+              setIsAudioFading(true);
+              fadeIntervalRef.current = setInterval(() => {
+                if (!audioRef.current) return;
+                const currentVol = audioRef.current.volume;
+                if (currentVol > 0.08) {
+                  setSafeVolume(currentVol - step * 2);
+                } else {
+                  setSafeVolume(0);
+                  audioRef.current.pause();
+                  setIsAudioFading(false);
+                  if (fadeIntervalRef.current) {
+                    clearInterval(fadeIntervalRef.current);
+                    fadeIntervalRef.current = null;
+                  }
+                }
+              }, STEP_TIME);
+            } else {
+              setSafeVolume(0);
+              audio.pause();
+              setIsAudioFading(false);
+            }
           }
         }
 
@@ -352,7 +416,7 @@
             fadeIntervalRef.current = null;
           }
         };
-      }, [isPlaying, isMuted, isVideoSlide, model.keynoteAudioUrl]);
+      }, [isPlaying, isMuted, isVideoSlide, model.keynoteAudioUrl, current]);
 
       useEffect(() => {
         return () => {
@@ -386,42 +450,62 @@
 
       const handleNext = (e) => {
         if (e) e.stopPropagation();
+        ensureAudioPlaying();
         setCurrent(c => (c + 1) % slides.length);
         setProgress(0);
       };
 
       const handlePrev = (e) => {
         if (e) e.stopPropagation();
+        ensureAudioPlaying();
         setCurrent(c => (c - 1 + slides.length) % slides.length);
         setProgress(0);
       };
 
       const handleRestart = (e) => {
         if (e) e.stopPropagation();
+        ensureAudioPlaying();
         setCurrent(0);
         setProgress(0);
+      };
+
+      const toggleMute = () => {
+        setIsMuted(prev => {
+          const next = !prev;
+          if (!next) {
+            setTimeout(() => {
+              const audio = audioRef.current;
+              if (audio) {
+                audio.play().then(() => setIsAudioBlocked(false)).catch(() => {});
+              }
+            }, 50);
+          }
+          return next;
+        });
       };
 
       useEffect(() => {
         const handleKeyDown = (e) => {
           if (e.key === 'ArrowRight' || e.key === ' ') {
+            ensureAudioPlaying();
             handleNext();
           } else if (e.key === 'ArrowLeft') {
+            ensureAudioPlaying();
             handlePrev();
           } else if (e.key === 'Escape') {
             onClose();
           } else if (e.key === 'm' || e.key === 'M') {
-            setIsMuted(m => !m);
+            toggleMute();
           }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-      }, [slides.length, onClose]);
+      }, [slides.length, onClose, isMuted]);
 
       return (
         <div className="fixed inset-0 z-[100] bg-[#050505] text-white flex items-center justify-center overflow-hidden select-none">
           {model.keynoteAudioUrl && (
-            <audio ref={audioRef} src={model.keynoteAudioUrl} loop />
+            <audio ref={audioRef} src={model.keynoteAudioUrl} loop preload="auto" playsInline />
           )}
           {/* 5-second progress bar */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-white/10 z-50 overflow-hidden">
@@ -465,6 +549,20 @@
                       <Icon name="volumeX" className="w-3.5 h-3.5" />
                       Ljud avstängt (M)
                     </span>
+                  ) : isAudioBlocked ? (
+                    <button 
+                      onClick={() => {
+                        const audio = audioRef.current;
+                        if (audio) {
+                          setSafeVolume(1.0);
+                          audio.play().then(() => setIsAudioBlocked(false)).catch(() => {});
+                        }
+                      }}
+                      className="flex items-center gap-1.5 text-amber-400 font-black cursor-pointer hover:underline"
+                    >
+                      <Icon name="volume2" className="w-3.5 h-3.5" />
+                      Klicka för att starta musik
+                    </button>
                   ) : (
                     <span className="flex items-center gap-1.5" style={{ color: model.themeColor || '#fbbf24' }}>
                       <Icon name="volume2" className="w-3.5 h-3.5" />
@@ -590,7 +688,7 @@
               <>
                 <div className="w-px h-6 bg-white/20 mx-1" />
                 <button 
-                  onClick={(e) => { e.stopPropagation(); setIsMuted(m => !m); }} 
+                  onClick={(e) => { e.stopPropagation(); toggleMute(); }} 
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer ${isMuted || isVideoSlide ? 'bg-white/5 text-slate-500 hover:text-white' : 'bg-white/10 text-amber-400 hover:bg-white/20'}`}
                   title={isVideoSlide ? "Videoljud aktivt (Musik tonas in efter videon)" : isMuted ? "Slå på Keynote musik (M)" : "Stäng av Keynote musik (M)"}
                 >
