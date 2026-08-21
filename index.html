@@ -57,7 +57,7 @@
     const { useState, useEffect, useRef, useMemo } = React;
 
     // --- EMBEDDED AGENCY MASTER DATA ---
-    const INITIAL_AGENCY = {"name":"AURA AGENCY","logoUrl":"https://i.imgur.com/dR9M9VC.jpeg","description":"Ett hypermodernt arkiv och agentur för nästa generations AI-modeller. Vi bygger identiteter från grunden, strukturerar DNA och skapar visuella upplevelser i absolut toppklass.","presentationVideoUrl":"https://i.imgur.com/G6aubfm.mp4","media":[{"id":"m1","type":"image","url":"https://i.imgur.com/ZOWF1II.jpeg","caption":"Affisch 1"},{"id":"m2","type":"image","url":"https://i.imgur.com/3c8xqHz.jpeg","caption":"Affisch 2"},{"id":"m3","type":"image","url":"https://i.imgur.com/IOwrY28.jpeg","caption":"Affisch 3"},{"id":"m4","type":"image","url":"https://i.imgur.com/i2WqcOG.png","caption":"Aura Tema"}],"models":[{"id":"alita-001","name":"Alita","role":"Minimalistisk Kreativ Ikon","definition":"En fotorealistisk AI-modell (29) med rakad styrka, kreativ själ och okonventionell skönhet. Skapad för att representera minimalism och autenticitet. Hon är introduktionsmodellen för hur man bygger en profil från grunden.","coreValues":["Minimalism","Styrka","Kreativitet","Autenticitet"],"themeColor":"#e2e8f0","logoUrl":"https://i.imgur.com/QwO7P8l.jpeg","signatureUrl":"https://i.imgur.com/Dh5v5sa.jpeg","themeImageUrl":"https://i.imgur.com/KVBMfXD.jpeg","showreelVideoUrl":"https://i.imgur.com/VmTTkRY.mp4","media":[],"professions":[{"id":"alita-p1","title":"Medicinsk & Rehabilitering","description":"Hennes rena, rakade look och tonade hållning gjorde henne perfekt för medicinska kampanjer, kliniska reklamfilmer och hälsoprojekt.","history":"Alita blev upptäckt av ett medicinföretag som sökte en modell som kunde förmedla styrka, sårbarhet och renhet. Det var där hennes resa började.","media":[{"id":"am1","type":"image","url":"https://i.imgur.com/yEM0Gxp.jpeg","caption":"Medicinsk Kampanj 1"},{"id":"am2","type":"image","url":"https://i.imgur.com/eWuiOte.jpg","caption":"Klinisk Renhet"},{"id":"m-1786902149241","type":"image","url":"https://i.imgur.com/5x7LOAX.jpeg","caption":"Självkänsla"},{"id":"m-1786902150591","type":"image","url":"https://i.imgur.com/5wGC3vT.jpeg","caption":"skönhet"},{"id":"m-1786902151663","type":"image","url":"https://i.imgur.com/wSqrgnZ.jpeg","caption":"Tillfrisknad"},{"id":"m-1786902772615","type":"image","url":"https://i.imgur.com/moJlZNK.jpeg","caption":"Frisk"}]},{"id":"alita-p2","title":"Kreativ Fashion & Editorial","description":"Futuristiska minimalistiska outfits, rena färger och skarpa konturer. Alita är en klädmodell som inte följer regler – hon skriver dem.","history":"Hennes unika uttryck tog henne vidare till större modejobb, editorial-uppdrag och tävlingar. Hon är modellen som ingen kan förutsäga.","media":[{"id":"am3","type":"image","url":"https://i.imgur.com/lSHvmHb.jpeg","caption":"Alita - Editorial Look"},{"id":"m-1786902410789","type":"image","url":"https://i.imgur.com/t280pSz.jpeg","caption":"Alita"},{"id":"m-1786902414277","type":"image","url":"https://i.imgur.com/klNAMC1.jpeg","caption":"Alita"},{"id":"m-1786902414843","type":"image","url":"https://i.imgur.com/IYabHMh.jpeg","caption":"Alita"},{"id":"m-1786902415471","type":"image","url":"https://i.imgur.com/naOmeNI.jpeg","caption":"Alita"},{"id":"m-1786904133754","type":"image","url":"https://i.imgur.com/z1RlBza.jpeg","caption":"Alita"}]},{"id":"alita-p3","title":"KOLLEKTIONer och tävlingar","description":"Alita har alltid varit svag för transparanta kläder och visar gärna upp ett par favoriter här.","history":"Alita är en fristående modell. Hon skapades ur idén att skönhet inte behöver hår för att vara stark. En mall för framtidens modellagenter.","media":[{"id":"m-1786906491778","type":"image","url":"https://i.imgur.com/aAPTyu9.jpeg","caption":"Alita - samlingar"},{"id":"m-1786906492298","type":"image","url":"https://i.imgur.com/l4c2Bhf.jpeg","caption":"Alita - samlingar"},{"id":"m-1786907693339","type":"image","url":"https://i.imgur.com/Bv7nKBX.jpeg","caption":"Alita - samlingar"},{"id":"m-1786907695147","type":"image","url":"https://i.imgur.com/NYdrK5K.jpg","caption":"Alita - samlingar"},{"id":"m-1786907696381","type":"image","url":"https://i.imgur.com/0gm6sw7.jpeg","caption":"Alita - samlingar"},{"id":"m-1786907700697","type":"image","url":"https://i.imgur.com/ohGOrjV.jpeg","caption":"Alita - samlingar"}]}]},{"id":"astrail-001","name":"Astrail","role":"The New Era (Auras Arv)","definition":"Astrail (26) tar över rampljuset, utrustad med både en animerad grundform och en fotorealistisk sida. Hennes syskon Inga (36) och Bodil (21) backar upp henne. De är alla djupt rotade i Auras ursprung – som i sin tur skapades från originalbilder på arkitekten själv.","coreValues":["Ursprung","Mångsidighet","Syskonskap","Evolution"],"themeColor":"#fbbf24","logoUrl":"https://i.imgur.com/LNbGzlR.jpeg","signatureUrl":"https://i.imgur.com/1v5xjdl.jpeg","themeImageUrl":"https://i.imgur.com/xNX0AYR.jpeg","showreelVideoUrl":"https://i.imgur.com/oIc3Ej1.mp4","media":[],"professions":[{"id":"p1","title":"Astrail (26)","description":"Står i rampljuset med två sidor: den stiliserade grundformen och den hyperrealistiska närvaron. Redo att leda den nya generationens interaktioner.","history":"Utvecklad ur Auras kärna. Syskonen är lyckliga över att hon ber dem om hjälp så att de också får chansen att glänsa.","media":[{"id":"pm1","type":"image","url":"https://i.imgur.com/iFQlVsM.png","caption":"Astrail - Ursprungsform"},{"id":"pm2","type":"image","url":"https://i.imgur.com/Xj6N8r3.png","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838331486","type":"image","url":"https://i.imgur.com/LbaQGok.png","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838370416","type":"image","url":"https://i.imgur.com/a1kZ8Gl.jpeg","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838384954","type":"image","url":"https://i.imgur.com/sK8TGjW.jpeg","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838396252","type":"image","url":"https://i.imgur.com/Zf4m7kp.jpeg","caption":"Astrail - Fotorealistisk"}]},{"id":"p-guide","title":"Guide till spel och appar","description":"Astrail som animerad virtuell guide och assistent. Det var denna form som kom att bli den nya \"Aura\" – AI-assistenten 2026.","history":"Den animerade grundformen togs fram för interaktiva gränssnitt och applikationsguider. Det var här beslutet togs att ge henne en personlighet, röst och fotorealistisk närvaro.","media":[{"id":"m-1786844638620","type":"image","url":"https://i.imgur.com/ORdkUfK.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844639086","type":"image","url":"https://i.imgur.com/f03My4M.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844639698","type":"image","url":"https://i.imgur.com/BYBi7i6.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844641056","type":"image","url":"https://i.imgur.com/lcTNiEk.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844641693","type":"image","url":"https://i.imgur.com/yMGCKrO.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786894951247","type":"image","url":"https://i.imgur.com/B5Dprme.png","caption":"Astrail - Spelkaraktär (Koncept)"}]},{"id":"p-1786884257681","title":"Spel NPC/Karaktär","description":"Astrail som virtuell spelkaraktär och NPC. Med dynamiska animationer, full rörlighet och integrering i moderna spelmotorer.","history":"Utvecklad för interaktiva spelvärldar och animationer där en stark digital karaktär och visuell närvaro krävs.","presentationVideoUrl":"https://i.imgur.com/OxSRR0d.mp4","media":[{"id":"m-1786884457711","type":"image","url":"https://i.imgur.com/Pcelkfz.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884458263","type":"image","url":"https://i.imgur.com/bq6WlM5.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884458829","type":"image","url":"https://i.imgur.com/ivR4vbG.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884459389","type":"image","url":"https://i.imgur.com/cenU5nw.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884459939","type":"image","url":"https://i.imgur.com/0ksU818.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884461733","type":"image","url":"https://i.imgur.com/NOKZHK4.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"}]},{"id":"p2","title":"Inga (36)","description":"Storasyster och assisterande kraft. Håller struktur och backar upp syskonen i modebranschen, trots branschens åldersfixering.","history":"Får egna modelljobb och jobbar hårt, men hennes primära roll är att skydda och stötta Astrail och Bodil.","media":[{"id":"pm3","type":"image","url":"https://i.imgur.com/L2l21PG.png","caption":"Inga - Storasyster"},{"id":"m-1786843743255","type":"image","url":"https://i.imgur.com/7N6FB6x.png","caption":"Inga - Storasyster"},{"id":"m-1786843744473","type":"image","url":"https://i.imgur.com/xVjXXEh.png","caption":"Inga - Storasyster"},{"id":"m-1786843745631","type":"image","url":"https://i.imgur.com/FNGVwvJ.png","caption":"Inga - Storasyster"},{"id":"m-1786843978333","type":"image","url":"https://i.imgur.com/9ER8T7U.png","caption":"Inga - Storasyster"},{"id":"m-1786843980009","type":"image","url":"https://i.imgur.com/WphJCr8.png","caption":"Inga - Storasyster"}]},{"id":"p3","title":"Bodil (21)","description":"Lillasyster och energisk sidekick. Har knappt fått vara med ännu, men hennes tid i rampljuset kommer.","history":"Den yngsta i den nya eran efter AURA. Nyfiken, oprövad och redo för framtiden.","media":[{"id":"pm4","type":"image","url":"https://i.imgur.com/r73P9A7.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839386531","type":"image","url":"https://i.imgur.com/tFcDdXW.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839419065","type":"image","url":"https://i.imgur.com/YU1yF72.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844550303","type":"image","url":"https://i.imgur.com/MvLPNXe.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844551420","type":"image","url":"https://i.imgur.com/rj3Qgis.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844554880","type":"image","url":"https://i.imgur.com/xlLjy4F.png","caption":"Bodil - Lillasyster"}]}]},{"id":"rosie-001","name":"Rosie","role":"The Purple Muse","definition":"En hybridmodell (32) skapad för både skådespeleri och lifestyle-kampanjer. Hon bär på en mystisk lila glöd (AURA PURPLE) som binder samman fantasy och verklighet.","coreValues":["Mystik","Skärpa","Fotogenisk Närvaro","Aura Purple"],"themeColor":"#a855f7","logoUrl":"https://i.imgur.com/JNBZqOD.jpeg","signatureUrl":"https://i.imgur.com/J6hDeXW.jpeg","themeImageUrl":"https://i.imgur.com/e19cTo4.jpeg","showreelVideoUrl":"https://i.imgur.com/s2geY93.mp4","media":[],"professions":[{"id":"rosie_p1","title":"Modell","description":"Rosie har ett ansikte som är perfekt för både film och modellarbete — en hybridmodell.","history":"Aura Agency tog in henne som A-modell, och på rekordtid klättrade hon uppåt i rankingen.","media":[{"id":"rm_1","type":"image","url":"https://i.imgur.com/g6TLivn.jpeg","caption":"Rosie - Modell"},{"id":"rm_2","type":"image","url":"https://i.imgur.com/rt3zFao.jpeg","caption":"Rosie - Modell"},{"id":"rm_3","type":"image","url":"https://i.imgur.com/TdlCshv.jpeg","caption":"Rosie - Modell"},{"id":"rm_4","type":"image","url":"https://i.imgur.com/BSrTm6A.jpeg","caption":"Rosie - Modell"},{"id":"rm_5","type":"image","url":"https://i.imgur.com/azcQdZ3.jpeg","caption":"Rosie - Modell"},{"id":"rm_6","type":"image","url":"https://i.imgur.com/joVQXlF.jpeg","caption":"Rosie - Modell"}]},{"id":"rosie_p2","title":"AI Kontorsassistent","description":"Elegant, professionell och självsäker — perfekt för corporate-reklam och affärsmiljöer.","history":"Med en skarp svart blazer och vit topp representerar hon modern business med en mjuk touch.","media":[{"id":"rc_1","type":"image","url":"https://i.imgur.com/6fEQSck.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_2","type":"image","url":"https://i.imgur.com/hDUBKXk.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_3","type":"image","url":"https://i.imgur.com/Cd5ZNLu.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_4","type":"image","url":"https://i.imgur.com/ODbB268.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_5","type":"image","url":"https://i.imgur.com/Lo2Mh4O.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_6","type":"image","url":"https://i.imgur.com/5mBZASR.jpeg","caption":"Rosie - En dag på kontoret"}]},{"id":"rosie_p3","title":"Skådespelare (Alv)","description":"Elv-liknande skönhet för fantasyproduktioner. Perfekt i mossiga skogar, dimma och magiska miljöer.","history":"Hennes lila energi blir en mystisk aura som förstärker varje fantasy-scen hon deltar i.","media":[{"id":"re_1","type":"image","url":"https://i.imgur.com/GzIZ4gF.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_2","type":"image","url":"https://i.imgur.com/qGIhmHw.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_3","type":"image","url":"https://i.imgur.com/aSglL0S.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_4","type":"image","url":"https://i.imgur.com/SBtMUBS.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_5","type":"image","url":"https://i.imgur.com/PreaFRb.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_6","type":"image","url":"https://i.imgur.com/PZ4sKlm.jpeg","caption":"Rosie - Alv i en filminspelning"}]},{"id":"rosie_p4","title":"Skådespelare (Viking)","description":"Dramatisk och kraftfull närvaro för historiska äventyr och vikingafilmer.","history":"Rosie visar sin mångsidighet som skådespelare, där hennes intensiva blick och styrka kommer till sin rätt.","media":[{"id":"rv_1","type":"image","url":"https://i.imgur.com/rCFxN3v.jpeg","caption":"Rosie - Viking film"},{"id":"rv_2","type":"image","url":"https://i.imgur.com/0bVzQqr.jpeg","caption":"Rosie - Viking film"},{"id":"rv_3","type":"image","url":"https://i.imgur.com/4w2EXun.jpeg","caption":"Rosie - Viking film"},{"id":"rv_4","type":"image","url":"https://i.imgur.com/BTFCpV0.jpeg","caption":"Rosie - Viking film"},{"id":"rv_5","type":"image","url":"https://i.imgur.com/vtUABFL.jpeg","caption":"Rosie - Viking film"},{"id":"rv_6","type":"image","url":"https://i.imgur.com/6sKWOl2.jpeg","caption":"Rosie - Viking film"}]},{"id":"rosie_p5","title":"Strand & Lifestyle (Vit klänning)","description":"Magisk i solnedgångsljus med flödande klänningar. Drömlik strandestetik.","history":"En kväll under en inspelning vid havet upptäcktes hon av Aura Agency. Det lila skenet över vattnet fångade hennes sanna hybridnatur.","media":[{"id":"rw_1","type":"image","url":"https://i.imgur.com/lqyTmMm.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_2","type":"image","url":"https://i.imgur.com/Zffm8t0.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_3","type":"image","url":"https://i.imgur.com/gSDS4ke.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_4","type":"image","url":"https://i.imgur.com/qtoBX3u.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_5","type":"image","url":"https://i.imgur.com/CopMLTe.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_6","type":"image","url":"https://i.imgur.com/2sexFrl.jpeg","caption":"Rosie - stranden/vitklänning"}]},{"id":"rosie_p6","title":"Strandmodell (Solnedgång)","description":"Lila energi reflekteras i vågorna och skapar en drömlik närvaro i varmt ljus.","history":"'From the Shoreline to the Spotlight' – Rosie är en naturbegåvning vid kusten.","media":[{"id":"rs_1","type":"image","url":"https://i.imgur.com/QWrWdI5.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_2","type":"image","url":"https://i.imgur.com/Rx6FqGp.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_3","type":"image","url":"https://i.imgur.com/FktDFqx.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_4","type":"image","url":"https://i.imgur.com/afuCYh0.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_5","type":"image","url":"https://i.imgur.com/tnhscTN.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_6","type":"image","url":"https://i.imgur.com/k6g3g2l.jpeg","caption":"Rosie - Stranden/solnedgång"}]}]},{"id":"inga-001","name":"Inga","role":"Mature Model","definition":"En fotorealistisk AI-modell (36) som är erfaren, realistisk och stabil. Hon är den vuxna rösten i gruppen och representerar elegans och jordnära trygghet.","coreValues":["Trygg","Realistisk","Stabil","Professionell"],"themeColor":"#cbd5e1","logoUrl":"https://i.imgur.com/lSLQa0p.jpeg","signatureUrl":"https://i.imgur.com/QYvWGO9.jpeg","themeImageUrl":"https://i.imgur.com/B3eoQ22.jpeg","media":[],"professions":[{"id":"inga_p1","title":"Mature Model","description":"Storasyster och assisterande kraft. Håller struktur och backar upp syskonen i modebranschen.","history":"Får egna modelljobb och jobbar hårt, men hennes primära roll är att skydda och stötta Astrail och Bodil.","media":[{"id":"pm3","type":"image","url":"https://i.imgur.com/L2l21PG.png","caption":"Inga - Storasyster"},{"id":"m-1786843743255","type":"image","url":"https://i.imgur.com/7N6FB6x.png","caption":"Inga - Storasyster"},{"id":"m-1786843744473","type":"image","url":"https://i.imgur.com/xVjXXEh.png","caption":"Inga - Storasyster"},{"id":"m-1786843745631","type":"image","url":"https://i.imgur.com/FNGVwvJ.png","caption":"Inga - Storasyster"},{"id":"m-1786843978333","type":"image","url":"https://i.imgur.com/9ER8T7U.png","caption":"Inga - Storasyster"},{"id":"m-1786843980009","type":"image","url":"https://i.imgur.com/WphJCr8.png","caption":"Inga - Storasyster"}]}],"keynoteAudioUrl":"https://github.com/b10msk1/modellappljud/raw/refs/heads/main/Root%20Strike%20git%20hub.mp3","showreelVideoUrl":"https://i.imgur.com/owAmHn7.mp4"},{"id":"bodil-001","name":"Bodil","role":"Junior Model","definition":"En fotorealistisk AI-modell (21) som är mjuk, varm, nyfiken och autentisk. Hon är den mest mänskliga och vardagsnära modellen i AURA-familjen.","coreValues":["Mjuk","Nyfiken","Omtänksam","Lekfull"],"themeColor":"#f472b6","logoUrl":"https://i.imgur.com/7uVByMn.jpeg","signatureUrl":"https://i.imgur.com/AgMtGCF.jpeg","themeImageUrl":"https://i.imgur.com/MSiAJNk.jpeg","media":[],"professions":[{"id":"bodil_p1","title":"Junior Model","description":"Lillasyster och energisk sidekick. Har knappt fått vara med ännu, men hennes tid i rampljuset kommer.","history":"Den yngsta i den nya eran efter AURA. Nyfiken, oprövad och redo för framtiden.","media":[{"id":"pm4","type":"image","url":"https://i.imgur.com/r73P9A7.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839386531","type":"image","url":"https://i.imgur.com/tFcDdXW.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839419065","type":"image","url":"https://i.imgur.com/YU1yF72.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844550303","type":"image","url":"https://i.imgur.com/MvLPNXe.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844551420","type":"image","url":"https://i.imgur.com/rj3Qgis.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844554880","type":"image","url":"https://i.imgur.com/xlLjy4F.png","caption":"Bodil - Lillasyster"}]}],"keynoteAudioUrl":"https://github.com/b10msk1/modellappljud/raw/refs/heads/main/Root%20Strike%20git%20hub.mp3"}]};
+    const INITIAL_AGENCY = {"name":"AURA AGENCY","logoUrl":"https://i.imgur.com/dR9M9VC.jpeg","description":"Ett hypermodernt arkiv och agentur för nästa generations AI-modeller. Vi bygger identiteter från grunden, strukturerar DNA och skapar visuella upplevelser i absolut toppklass.","presentationVideoUrl":"https://i.imgur.com/G6aubfm.mp4","media":[{"id":"m1","type":"image","url":"https://i.imgur.com/ZOWF1II.jpeg","caption":"Affisch 1"},{"id":"m2","type":"image","url":"https://i.imgur.com/3c8xqHz.jpeg","caption":"Affisch 2"},{"id":"m3","type":"image","url":"https://i.imgur.com/IOwrY28.jpeg","caption":"Affisch 3"},{"id":"m4","type":"image","url":"https://i.imgur.com/i2WqcOG.png","caption":"Aura Tema"}],"models":[{"id":"alita-001","name":"Alita","role":"Minimalistisk Kreativ Ikon","definition":"En fotorealistisk AI-modell (29) med rakad styrka, kreativ själ och okonventionell skönhet. Skapad för att representera minimalism och autenticitet. Hon är introduktionsmodellen för hur man bygger en profil från grunden.","coreValues":["Minimalism","Styrka","Kreativitet","Autenticitet"],"themeColor":"#e2e8f0","logoUrl":"https://i.imgur.com/QwO7P8l.jpeg","signatureUrl":"https://i.imgur.com/Dh5v5sa.jpeg","themeImageUrl":"https://i.imgur.com/KVBMfXD.jpeg","showreelVideoUrl":"https://i.imgur.com/VmTTkRY.mp4","media":[],"professions":[{"id":"alita-p1","title":"Medicinsk & Rehabilitering","description":"Hennes rena, rakade look och tonade hållning gjorde henne perfekt för medicinska kampanjer, kliniska reklamfilmer och hälsoprojekt.","history":"Alita blev upptäckt av ett medicinföretag som sökte en modell som kunde förmedla styrka, sårbarhet och renhet. Det var där hennes resa började.","media":[{"id":"am1","type":"image","url":"https://i.imgur.com/yEM0Gxp.jpeg","caption":"Medicinsk Kampanj 1"},{"id":"am2","type":"image","url":"https://i.imgur.com/eWuiOte.jpg","caption":"Klinisk Renhet"},{"id":"m-1786902149241","type":"image","url":"https://i.imgur.com/5x7LOAX.jpeg","caption":"Självkänsla"},{"id":"m-1786902150591","type":"image","url":"https://i.imgur.com/5wGC3vT.jpeg","caption":"skönhet"},{"id":"m-1786902151663","type":"image","url":"https://i.imgur.com/wSqrgnZ.jpeg","caption":"Tillfrisknad"},{"id":"m-1786902772615","type":"image","url":"https://i.imgur.com/moJlZNK.jpeg","caption":"Frisk"}]},{"id":"alita-p2","title":"Kreativ Fashion & Editorial","description":"Futuristiska minimalistiska outfits, rena färger och skarpa konturer. Alita är en klädmodell som inte följer regler – hon skriver dem.","history":"Hennes unika uttryck tog henne vidare till större modejobb, editorial-uppdrag och tävlingar. Hon är modellen som ingen kan förutsäga.","media":[{"id":"am3","type":"image","url":"https://i.imgur.com/lSHvmHb.jpeg","caption":"Alita - Editorial Look"},{"id":"m-1786902410789","type":"image","url":"https://i.imgur.com/t280pSz.jpeg","caption":"Alita"},{"id":"m-1786902414277","type":"image","url":"https://i.imgur.com/klNAMC1.jpeg","caption":"Alita"},{"id":"m-1786902414843","type":"image","url":"https://i.imgur.com/IYabHMh.jpeg","caption":"Alita"},{"id":"m-1786902415471","type":"image","url":"https://i.imgur.com/naOmeNI.jpeg","caption":"Alita"},{"id":"m-1786904133754","type":"image","url":"https://i.imgur.com/z1RlBza.jpeg","caption":"Alita"}]},{"id":"alita-p3","title":"KOLLEKTIONer och tävlingar","description":"Alita har alltid varit svag för transparanta kläder och visar gärna upp ett par favoriter här.","history":"Alita är en fristående modell. Hon skapades ur idén att skönhet inte behöver hår för att vara stark. En mall för framtidens modellagenter.","media":[{"id":"m-1786906491778","type":"image","url":"https://i.imgur.com/aAPTyu9.jpeg","caption":"Alita - samlingar"},{"id":"m-1786906492298","type":"image","url":"https://i.imgur.com/l4c2Bhf.jpeg","caption":"Alita - samlingar"},{"id":"m-1786907693339","type":"image","url":"https://i.imgur.com/Bv7nKBX.jpeg","caption":"Alita - samlingar"},{"id":"m-1786907695147","type":"image","url":"https://i.imgur.com/NYdrK5K.jpg","caption":"Alita - samlingar"},{"id":"m-1786907696381","type":"image","url":"https://i.imgur.com/0gm6sw7.jpeg","caption":"Alita - samlingar"},{"id":"m-1786907700697","type":"image","url":"https://i.imgur.com/ohGOrjV.jpeg","caption":"Alita - samlingar"}]}]},{"id":"astrail-001","name":"Astrail","role":"The New Era (Auras Arv)","definition":"Astrail (26) tar över rampljuset, utrustad med både en animerad grundform och en fotorealistisk sida. Hennes syskon Inga (36) och Bodil (21) backar upp henne. De är alla djupt rotade i Auras ursprung – som i sin tur skapades från originalbilder på arkitekten själv.","coreValues":["Ursprung","Mångsidighet","Syskonskap","Evolution"],"themeColor":"#fbbf24","logoUrl":"https://i.imgur.com/LNbGzlR.jpeg","signatureUrl":"https://i.imgur.com/1v5xjdl.jpeg","themeImageUrl":"https://i.imgur.com/xNX0AYR.jpeg","showreelVideoUrl":"https://i.imgur.com/oIc3Ej1.mp4","media":[],"professions":[{"id":"p1","title":"Astrail (26)","description":"Står i rampljuset med två sidor: den stiliserade grundformen och den hyperrealistiska närvaron. Redo att leda den nya generationens interaktioner.","history":"Utvecklad ur Auras kärna. Syskonen är lyckliga över att hon ber dem om hjälp så att de också får chansen att glänsa.","media":[{"id":"pm1","type":"image","url":"https://i.imgur.com/iFQlVsM.png","caption":"Astrail - Ursprungsform"},{"id":"pm2","type":"image","url":"https://i.imgur.com/Xj6N8r3.png","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838331486","type":"image","url":"https://i.imgur.com/LbaQGok.png","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838370416","type":"image","url":"https://i.imgur.com/a1kZ8Gl.jpeg","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838384954","type":"image","url":"https://i.imgur.com/sK8TGjW.jpeg","caption":"Astrail - Fotorealistisk"},{"id":"m-1786838396252","type":"image","url":"https://i.imgur.com/Zf4m7kp.jpeg","caption":"Astrail - Fotorealistisk"}]},{"id":"p-guide","title":"Guide till spel och appar","description":"Astrail som animerad virtuell guide och assistent. Det var denna form som kom att bli den nya \"Aura\" – AI-assistenten 2026.","history":"Den animerade grundformen togs fram för interaktiva gränssnitt och applikationsguider. Det var här beslutet togs att ge henne en personlighet, röst och fotorealistisk närvaro.","media":[{"id":"m-1786844638620","type":"image","url":"https://i.imgur.com/ORdkUfK.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844639086","type":"image","url":"https://i.imgur.com/f03My4M.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844639698","type":"image","url":"https://i.imgur.com/BYBi7i6.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844641056","type":"image","url":"https://i.imgur.com/lcTNiEk.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786844641693","type":"image","url":"https://i.imgur.com/yMGCKrO.png","caption":"Astrail - Spelkaraktär (Animerad)"},{"id":"m-1786894951247","type":"image","url":"https://i.imgur.com/B5Dprme.png","caption":"Astrail - Spelkaraktär (Koncept)"}]},{"id":"p-1786884257681","title":"Spel NPC/Karaktär","description":"Astrail som virtuell spelkaraktär och NPC. Med dynamiska animationer, full rörlighet och integrering i moderna spelmotorer.","history":"Utvecklad för interaktiva spelvärldar och animationer där en stark digital karaktär och visuell närvaro krävs.","presentationVideoUrl":"https://i.imgur.com/OxSRR0d.mp4","media":[{"id":"m-1786884457711","type":"image","url":"https://i.imgur.com/Pcelkfz.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884458263","type":"image","url":"https://i.imgur.com/bq6WlM5.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884458829","type":"image","url":"https://i.imgur.com/ivR4vbG.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884459389","type":"image","url":"https://i.imgur.com/cenU5nw.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884459939","type":"image","url":"https://i.imgur.com/0ksU818.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"},{"id":"m-1786884461733","type":"image","url":"https://i.imgur.com/NOKZHK4.png","caption":"Astrail - SPEL - NPC/KARAKTÄR"}]},{"id":"p2","title":"Inga (36)","description":"Storasyster och assisterande kraft. Håller struktur och backar upp syskonen i modebranschen, trots branschens åldersfixering.","history":"Får egna modelljobb och jobbar hårt, men hennes primära roll är att skydda och stötta Astrail och Bodil.","media":[{"id":"pm3","type":"image","url":"https://i.imgur.com/L2l21PG.png","caption":"Inga - Storasyster"},{"id":"m-1786843743255","type":"image","url":"https://i.imgur.com/7N6FB6x.png","caption":"Inga - Storasyster"},{"id":"m-1786843744473","type":"image","url":"https://i.imgur.com/xVjXXEh.png","caption":"Inga - Storasyster"},{"id":"m-1786843745631","type":"image","url":"https://i.imgur.com/FNGVwvJ.png","caption":"Inga - Storasyster"},{"id":"m-1786843978333","type":"image","url":"https://i.imgur.com/9ER8T7U.png","caption":"Inga - Storasyster"},{"id":"m-1786843980009","type":"image","url":"https://i.imgur.com/WphJCr8.png","caption":"Inga - Storasyster"}]},{"id":"p3","title":"Bodil (21)","description":"Lillasyster och energisk sidekick. Har knappt fått vara med ännu, men hennes tid i rampljuset kommer.","history":"Den yngsta i den nya eran efter AURA. Nyfiken, oprövad och redo för framtiden.","media":[{"id":"pm4","type":"image","url":"https://i.imgur.com/r73P9A7.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839386531","type":"image","url":"https://i.imgur.com/tFcDdXW.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839419065","type":"image","url":"https://i.imgur.com/YU1yF72.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844550303","type":"image","url":"https://i.imgur.com/MvLPNXe.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844551420","type":"image","url":"https://i.imgur.com/rj3Qgis.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844554880","type":"image","url":"https://i.imgur.com/xlLjy4F.png","caption":"Bodil - Lillasyster"}]}]},{"id":"rosie-001","name":"Rosie","role":"The Purple Muse","definition":"En hybridmodell (32) skapad för både skådespeleri och lifestyle-kampanjer. Hon bär på en mystisk lila glöd (AURA PURPLE) som binder samman fantasy och verklighet.","coreValues":["Mystik","Skärpa","Fotogenisk Närvaro","Aura Purple"],"themeColor":"#a855f7","logoUrl":"https://i.imgur.com/JNBZqOD.jpeg","signatureUrl":"https://i.imgur.com/J6hDeXW.jpeg","themeImageUrl":"https://i.imgur.com/e19cTo4.jpeg","showreelVideoUrl":"https://i.imgur.com/s2geY93.mp4","media":[],"professions":[{"id":"rosie_p1","title":"Modell","description":"Rosie har ett ansikte som är perfekt för både film och modellarbete — en hybridmodell.","history":"Aura Agency tog in henne som A-modell, och på rekordtid klättrade hon uppåt i rankingen.","media":[{"id":"rm_1","type":"image","url":"https://i.imgur.com/g6TLivn.jpeg","caption":"Rosie - Modell"},{"id":"rm_2","type":"image","url":"https://i.imgur.com/rt3zFao.jpeg","caption":"Rosie - Modell"},{"id":"rm_3","type":"image","url":"https://i.imgur.com/TdlCshv.jpeg","caption":"Rosie - Modell"},{"id":"rm_4","type":"image","url":"https://i.imgur.com/BSrTm6A.jpeg","caption":"Rosie - Modell"},{"id":"rm_5","type":"image","url":"https://i.imgur.com/azcQdZ3.jpeg","caption":"Rosie - Modell"},{"id":"rm_6","type":"image","url":"https://i.imgur.com/joVQXlF.jpeg","caption":"Rosie - Modell"}]},{"id":"rosie_p2","title":"AI Kontorsassistent","description":"Elegant, professionell och självsäker — perfekt för corporate-reklam och affärsmiljöer.","history":"Med en skarp svart blazer och vit topp representerar hon modern business med en mjuk touch.","media":[{"id":"rc_1","type":"image","url":"https://i.imgur.com/6fEQSck.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_2","type":"image","url":"https://i.imgur.com/hDUBKXk.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_3","type":"image","url":"https://i.imgur.com/Cd5ZNLu.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_4","type":"image","url":"https://i.imgur.com/ODbB268.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_5","type":"image","url":"https://i.imgur.com/Lo2Mh4O.jpeg","caption":"Rosie - En dag på kontoret"},{"id":"rc_6","type":"image","url":"https://i.imgur.com/5mBZASR.jpeg","caption":"Rosie - En dag på kontoret"}]},{"id":"rosie_p3","title":"Skådespelare (Alv)","description":"Elv-liknande skönhet för fantasyproduktioner. Perfekt i mossiga skogar, dimma och magiska miljöer.","history":"Hennes lila energi blir en mystisk aura som förstärker varje fantasy-scen hon deltar i.","media":[{"id":"re_1","type":"image","url":"https://i.imgur.com/GzIZ4gF.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_2","type":"image","url":"https://i.imgur.com/qGIhmHw.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_3","type":"image","url":"https://i.imgur.com/aSglL0S.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_4","type":"image","url":"https://i.imgur.com/SBtMUBS.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_5","type":"image","url":"https://i.imgur.com/PreaFRb.jpeg","caption":"Rosie - Alv i en filminspelning"},{"id":"re_6","type":"image","url":"https://i.imgur.com/PZ4sKlm.jpeg","caption":"Rosie - Alv i en filminspelning"}]},{"id":"rosie_p4","title":"Skådespelare (Viking)","description":"Dramatisk och kraftfull närvaro för historiska äventyr och vikingafilmer.","history":"Rosie visar sin mångsidighet som skådespelare, där hennes intensiva blick och styrka kommer till sin rätt.","media":[{"id":"rv_1","type":"image","url":"https://i.imgur.com/rCFxN3v.jpeg","caption":"Rosie - Viking film"},{"id":"rv_2","type":"image","url":"https://i.imgur.com/0bVzQqr.jpeg","caption":"Rosie - Viking film"},{"id":"rv_3","type":"image","url":"https://i.imgur.com/4w2EXun.jpeg","caption":"Rosie - Viking film"},{"id":"rv_4","type":"image","url":"https://i.imgur.com/BTFCpV0.jpeg","caption":"Rosie - Viking film"},{"id":"rv_5","type":"image","url":"https://i.imgur.com/vtUABFL.jpeg","caption":"Rosie - Viking film"},{"id":"rv_6","type":"image","url":"https://i.imgur.com/6sKWOl2.jpeg","caption":"Rosie - Viking film"}]},{"id":"rosie_p5","title":"Strand & Lifestyle (Vit klänning)","description":"Magisk i solnedgångsljus med flödande klänningar. Drömlik strandestetik.","history":"En kväll under en inspelning vid havet upptäcktes hon av Aura Agency. Det lila skenet över vattnet fångade hennes sanna hybridnatur.","media":[{"id":"rw_1","type":"image","url":"https://i.imgur.com/lqyTmMm.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_2","type":"image","url":"https://i.imgur.com/Zffm8t0.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_3","type":"image","url":"https://i.imgur.com/gSDS4ke.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_4","type":"image","url":"https://i.imgur.com/qtoBX3u.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_5","type":"image","url":"https://i.imgur.com/CopMLTe.jpeg","caption":"Rosie - stranden/vitklänning"},{"id":"rw_6","type":"image","url":"https://i.imgur.com/2sexFrl.jpeg","caption":"Rosie - stranden/vitklänning"}]},{"id":"rosie_p6","title":"Strandmodell (Solnedgång)","description":"Lila energi reflekteras i vågorna och skapar en drömlik närvaro i varmt ljus.","history":"'From the Shoreline to the Spotlight' – Rosie är en naturbegåvning vid kusten.","media":[{"id":"rs_1","type":"image","url":"https://i.imgur.com/QWrWdI5.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_2","type":"image","url":"https://i.imgur.com/Rx6FqGp.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_3","type":"image","url":"https://i.imgur.com/FktDFqx.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_4","type":"image","url":"https://i.imgur.com/afuCYh0.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_5","type":"image","url":"https://i.imgur.com/tnhscTN.jpeg","caption":"Rosie - Stranden/solnedgång"},{"id":"rs_6","type":"image","url":"https://i.imgur.com/k6g3g2l.jpeg","caption":"Rosie - Stranden/solnedgång"}]}]},{"id":"inga-001","name":"Inga","role":"Mature Model","definition":"En fotorealistisk AI-modell (36) som är erfaren, realistisk och stabil. Hon är den vuxna rösten i gruppen och representerar elegans och jordnära trygghet.","coreValues":["Trygg","Realistisk","Stabil","Professionell"],"themeColor":"#cbd5e1","logoUrl":"https://i.imgur.com/lSLQa0p.jpeg","signatureUrl":"https://i.imgur.com/QYvWGO9.jpeg","themeImageUrl":"https://i.imgur.com/B3eoQ22.jpeg","media":[],"professions":[{"id":"inga_p1","title":"Mature Model","description":"Storasyster och assisterande kraft. Håller struktur och backar upp syskonen i modebranschen.","history":"Får egna modelljobb och jobbar hårt, men hennes primära roll är att skydda och stötta Astrail och Bodil.","media":[{"id":"pm3","type":"image","url":"https://i.imgur.com/L2l21PG.png","caption":"Inga - Storasyster"},{"id":"m-1786843743255","type":"image","url":"https://i.imgur.com/7N6FB6x.png","caption":"Inga - Storasyster"},{"id":"m-1786843744473","type":"image","url":"https://i.imgur.com/xVjXXEh.png","caption":"Inga - Storasyster"},{"id":"m-1786843745631","type":"image","url":"https://i.imgur.com/FNGVwvJ.png","caption":"Inga - Storasyster"},{"id":"m-1786843978333","type":"image","url":"https://i.imgur.com/9ER8T7U.png","caption":"Inga - Storasyster"},{"id":"m-1786843980009","type":"image","url":"https://i.imgur.com/WphJCr8.png","caption":"Inga - Storasyster"}]}],"keynoteAudioUrl":"https://github.com/b10msk1/modellappljud/raw/refs/heads/main/Root%20Strike%20git%20hub.mp3","showreelVideoUrl":"https://i.imgur.com/owAmHn7.mp4"},{"id":"bodil-001","name":"Bodil","role":"Junior Model","definition":"En fotorealistisk AI-modell (21) som är mjuk, varm, nyfiken och autentisk. Hon är den mest mänskliga och vardagsnära modellen i AURA-familjen.","coreValues":["Mjuk","Nyfiken","Omtänksam","Lekfull"],"themeColor":"#f472b6","logoUrl":"https://i.imgur.com/7uVByMn.jpeg","signatureUrl":"https://i.imgur.com/AgMtGCF.jpeg","themeImageUrl":"https://i.imgur.com/MSiAJNk.jpeg","media":[],"professions":[{"id":"bodil_p1","title":"Junior Model","description":"Lillasyster och energisk sidekick. Har knappt fått vara med ännu, men hennes tid i rampljuset kommer.","history":"Den yngsta i den nya eran efter AURA. Nyfiken, oprövad och redo för framtiden.","media":[{"id":"pm4","type":"image","url":"https://i.imgur.com/r73P9A7.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839386531","type":"image","url":"https://i.imgur.com/tFcDdXW.png","caption":"Bodil - Lillasyster"},{"id":"m-1786839419065","type":"image","url":"https://i.imgur.com/YU1yF72.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844550303","type":"image","url":"https://i.imgur.com/MvLPNXe.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844551420","type":"image","url":"https://i.imgur.com/rj3Qgis.png","caption":"Bodil - Lillasyster"},{"id":"m-1786844554880","type":"image","url":"https://i.imgur.com/xlLjy4F.png","caption":"Bodil - Lillasyster"}]}],"keynoteAudioUrl":"https://github.com/b10msk1/modellappljud/raw/refs/heads/main/Root%20Strike%20git%20hub.mp3","showreelVideoUrl":"https://i.imgur.com/hCy8WC8.mp4"}]};
 
     // --- ICONS (Zero-dependency SVG Component Helpers) ---
     function Icon({ name, className = "w-4 h-4", style }) {
@@ -191,6 +191,16 @@
         edit: (
           <svg className={className} style={style} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+          </svg>
+        ),
+        film: (
+          <svg className={className} style={style} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/>
+          </svg>
+        ),
+        clapperboard: (
+          <svg className={className} style={style} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20.2 6 3 11l-.9-2.4c-.4-1.1.2-2.4 1.3-2.8l12.4-4.5c1.1-.4 2.4.2 2.8 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>
           </svg>
         )
       };
@@ -601,7 +611,13 @@
             {slide.type === 'SHOWREEL' && (
               <div className="relative w-full h-full flex flex-col items-center justify-center p-6 md:p-12">
                 <div className="relative w-full max-w-5xl aspect-video rounded-[3rem] overflow-hidden border border-white/20 shadow-[0_0_80px_rgba(0,0,0,0.9)] bg-black z-10">
-                  <video src={slide.videoUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                  <video src={slide.videoUrl} autoPlay loop muted={isMuted} playsInline className="w-full h-full object-cover" />
+                  <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-[10px] font-black uppercase tracking-widest text-slate-300">
+                    <span className="flex items-center gap-1.5">
+                      <Icon name={isMuted ? "volumeX" : "volume2"} className={isMuted ? "w-3.5 h-3.5 text-slate-400" : "w-3.5 h-3.5 text-emerald-400"} />
+                      {isMuted ? 'Ljud av (M)' : 'Videoljud På'}
+                    </span>
+                  </div>
                 </div>
                 <div className="mt-6 z-20 text-center">
                   <h2 className="text-2xl md:text-4xl font-black italic uppercase tracking-tight text-white drop-shadow-md">{slide.title}</h2>
@@ -630,7 +646,13 @@
             {slide.type === 'VIDEO' && (
               <div className="relative w-full h-full flex flex-col items-center justify-center p-6 md:p-12">
                 <div className="relative w-full max-w-5xl aspect-video rounded-[3rem] overflow-hidden border border-white/20 shadow-[0_0_80px_rgba(0,0,0,0.9)] bg-black z-10">
-                  <video src={slide.videoUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                  <video src={slide.videoUrl} autoPlay loop muted={isMuted} playsInline className="w-full h-full object-cover" />
+                  <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-[10px] font-black uppercase tracking-widest text-slate-300">
+                    <span className="flex items-center gap-1.5">
+                      <Icon name={isMuted ? "volumeX" : "volume2"} className={isMuted ? "w-3.5 h-3.5 text-slate-400" : "w-3.5 h-3.5 text-emerald-400"} />
+                      {isMuted ? 'Ljud av (M)' : 'Videoljud På'}
+                    </span>
+                  </div>
                 </div>
                 <div className="mt-6 z-20 text-center">
                   <h2 className="text-2xl md:text-4xl font-black italic uppercase tracking-tight text-white drop-shadow-md">{slide.title}</h2>
@@ -921,6 +943,348 @@
       );
     }
 
+    // --- DYNASTY SHOWREEL (Aura-dynastin Cinema Mode) ---
+    function DynastyShowreel({ agency, onClose, initialChapter = 0 }) {
+      const chapters = useMemo(() => {
+        const list = [];
+        if (agency.presentationVideoUrl) {
+          list.push({
+            id: 'hq-intro',
+            title: agency.name,
+            subtitle: 'Officiell Agenturpresentation // HQ',
+            description: agency.description || 'Välkommen till Aura-dynastins samlade presentationsfilm.',
+            videoUrl: agency.presentationVideoUrl,
+            themeColor: '#e58e26',
+            avatarUrl: agency.logoUrl || '',
+            badge: 'HQ Central'
+          });
+        }
+        const modelOrder = ['alita-001', 'astrail-001', 'inga-001', 'bodil-001', 'rosie-001'];
+        const sortedModels = [...(agency.models || [])].sort((a, b) => {
+          const idxA = modelOrder.indexOf(a.id);
+          const idxB = modelOrder.indexOf(b.id);
+          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+          if (idxA !== -1) return -1;
+          if (idxB !== -1) return 1;
+          return 0;
+        });
+
+        sortedModels.forEach((m) => {
+          const videoUrl = m.showreelVideoUrl || m.secondaryShowreelVideoUrl || (m.professions && m.professions[0]?.presentationVideoUrl);
+          if (videoUrl) {
+            list.push({
+              id: m.id,
+              title: m.name,
+              subtitle: m.role + ' • ' + (m.age || '26') + ' år',
+              description: m.definition || '',
+              videoUrl: videoUrl,
+              themeColor: m.themeColor || '#fbbf24',
+              avatarUrl: m.themeImageUrl || m.logoUrl || '',
+              badge: m.coreValues?.[0] || 'Aktiv Modell'
+            });
+          }
+        });
+        return list;
+      }, [agency]);
+
+      const [currentIdx, setCurrentIdx] = useState(initialChapter);
+      const [isPlaying, setIsPlaying] = useState(true);
+      const [isMuted, setIsMuted] = useState(false);
+      const [progress, setProgress] = useState(0);
+      const [duration, setDuration] = useState(0);
+      const [currentTime, setCurrentTime] = useState(0);
+      const [showPlaylist, setShowPlaylist] = useState(false);
+
+      const videoRef = useRef(null);
+      const currentChapter = chapters[currentIdx] || chapters[0];
+
+      useEffect(() => {
+        const vid = videoRef.current;
+        if (!vid) return;
+        vid.muted = isMuted;
+        vid.volume = 1.0;
+        vid.currentTime = 0;
+        setProgress(0);
+        setCurrentTime(0);
+        vid.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+      }, [currentIdx]);
+
+      useEffect(() => {
+        const vid = videoRef.current;
+        if (vid) {
+          vid.muted = isMuted;
+        }
+      }, [isMuted]);
+
+      const handleTimeUpdate = () => {
+        const vid = videoRef.current;
+        if (!vid || !vid.duration) return;
+        setCurrentTime(vid.currentTime);
+        setDuration(vid.duration);
+        setProgress((vid.currentTime / vid.duration) * 100);
+      };
+
+      const handleVideoEnded = () => {
+        if (currentIdx < chapters.length - 1) {
+          setCurrentIdx(prev => prev + 1);
+        } else {
+          setCurrentIdx(0);
+        }
+      };
+
+      const togglePlay = () => {
+        const vid = videoRef.current;
+        if (!vid) return;
+        if (vid.paused) {
+          vid.play().then(() => setIsPlaying(true)).catch(() => {});
+        } else {
+          vid.pause();
+          setIsPlaying(false);
+        }
+      };
+
+      const handleNext = () => {
+        setCurrentIdx(prev => (prev + 1) % chapters.length);
+      };
+
+      const handlePrev = () => {
+        setCurrentIdx(prev => (prev - 1 + chapters.length) % chapters.length);
+      };
+
+      const handleSeek = (e) => {
+        const vid = videoRef.current;
+        if (!vid || !vid.duration) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const newTime = (clickX / rect.width) * vid.duration;
+        vid.currentTime = newTime;
+        setCurrentTime(newTime);
+      };
+
+      const formatTime = (sec) => {
+        if (!sec || isNaN(sec)) return '0:00';
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+      };
+
+      useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (e.key === 'Escape') {
+            onClose();
+          } else if (e.key === 'ArrowRight') {
+            handleNext();
+          } else if (e.key === 'ArrowLeft') {
+            handlePrev();
+          } else if (e.key === ' ' || e.code === 'Space') {
+            e.preventDefault();
+            togglePlay();
+          } else if (e.key === 'm' || e.key === 'M') {
+            setIsMuted(prev => !prev);
+          }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+      }, [chapters.length, isMuted, isPlaying]);
+
+      if (!currentChapter) return null;
+
+      return (
+        <div className="fixed inset-0 z-[150] bg-[#030407] text-white flex flex-col justify-between overflow-hidden select-none">
+          {/* Top Header */}
+          <div className="relative z-30 flex items-center justify-between p-4 md:p-6 bg-gradient-to-b from-black/90 via-black/50 to-transparent">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+                <Icon name="film" className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] md:text-xs font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                    Aura-Dynastin
+                  </span>
+                  <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-400">
+                    Kapitel {currentIdx + 1} av {chapters.length}
+                  </span>
+                </div>
+                <h1 className="text-lg md:text-2xl font-black uppercase italic tracking-tighter text-white drop-shadow-md">
+                  Familje-Showreel // {currentChapter.title}
+                </h1>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowPlaylist(p => !p)}
+                className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 hover:border-amber-400 text-slate-200 hover:text-white transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer"
+              >
+                <Icon name="layers" className="w-3.5 h-3.5 text-amber-400" />
+                <span>Spellista ({chapters.length})</span>
+              </button>
+
+              <button
+                onClick={() => setIsMuted(prev => !prev)}
+                className={"flex items-center gap-2 px-4 py-2 rounded-2xl backdrop-blur-md border transition-all text-[11px] font-black uppercase tracking-widest cursor-pointer " + (isMuted ? 'bg-red-950/70 border-red-500/50 text-red-200' : 'bg-black/60 border-white/15 text-emerald-300 hover:border-emerald-400')}
+              >
+                <Icon name={isMuted ? "volumeX" : "volume2"} className="w-4 h-4" />
+                <span>{isMuted ? 'Ljud Av (M)' : 'Ljud På'}</span>
+              </button>
+
+              <button
+                onClick={onClose}
+                className="flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-2xl bg-red-950/80 border border-red-500/60 hover:bg-red-900 text-red-200 hover:text-white transition-all shadow-[0_0_25px_rgba(239,68,68,0.35)] font-black text-[11px] uppercase tracking-widest cursor-pointer"
+              >
+                <Icon name="x" className="w-4 h-4 text-red-400" />
+                <span>Stäng</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Main Video Viewport */}
+          <div className="relative flex-1 flex items-center justify-center p-2 md:p-6 overflow-hidden">
+            <div 
+              onClick={togglePlay} 
+              className="relative w-full max-w-6xl aspect-video rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.95)] bg-black cursor-pointer group"
+            >
+              <video
+                ref={videoRef}
+                src={currentChapter.videoUrl}
+                playsInline
+                onTimeUpdate={handleTimeUpdate}
+                onEnded={handleVideoEnded}
+                className="w-full h-full object-cover"
+              />
+
+              {!isPlaying && (
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-xs">
+                  <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-amber-500/90 text-black flex items-center justify-center shadow-[0_0_50px_rgba(245,158,11,0.6)] group-hover:scale-110 transition-transform">
+                    <Icon name="play" className="w-8 h-8 md:w-10 md:h-10 ml-1" />
+                  </div>
+                </div>
+              )}
+
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between pointer-events-none">
+                <div className="bg-black/75 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/15 max-w-xl">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: currentChapter.themeColor }}>
+                      {currentChapter.badge}
+                    </span>
+                    <span className="text-[10px] font-semibold text-slate-400">• {currentChapter.subtitle}</span>
+                  </div>
+                  <h2 className="text-xl md:text-2xl font-black uppercase italic tracking-tight text-white">{currentChapter.title}</h2>
+                </div>
+              </div>
+            </div>
+
+            {/* Slide-out Playlist Drawer */}
+            {showPlaylist && (
+              <div className="absolute top-6 right-6 bottom-6 w-80 md:w-96 bg-black/90 backdrop-blur-2xl border border-white/20 rounded-[2.5rem] p-6 z-40 flex flex-col shadow-2xl">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                  <div className="flex items-center gap-2">
+                    <Icon name="film" className="w-4 h-4 text-amber-400" />
+                    <h3 className="text-sm font-black uppercase italic tracking-wider text-white">Dynastins Spellista</h3>
+                  </div>
+                  <button onClick={() => setShowPlaylist(false)} className="text-slate-400 hover:text-white cursor-pointer">
+                    <Icon name="x" className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+                  {chapters.map((chap, idx) => (
+                    <button
+                      key={chap.id}
+                      onClick={() => setCurrentIdx(idx)}
+                      className={"w-full text-left p-3 rounded-2xl border transition-all flex items-center gap-3 cursor-pointer " + (idx === currentIdx ? 'bg-amber-500/20 border-amber-400 text-white shadow-[0_0_20px_rgba(245,158,11,0.2)]' : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10')}
+                    >
+                      <div className="w-10 h-10 rounded-xl overflow-hidden bg-black/40 border border-white/10 flex-shrink-0 flex items-center justify-center">
+                        {chap.avatarUrl ? (
+                          <img src={chap.avatarUrl} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          <Icon name="film" className="w-5 h-5 text-amber-400" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between">
+                          <span className="text-[9px] font-black uppercase tracking-widest" style={{ color: chap.themeColor }}>
+                            0{idx + 1} // {chap.badge}
+                          </span>
+                          {idx === currentIdx && (
+                            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                          )}
+                        </div>
+                        <h4 className="text-xs font-black uppercase italic truncate text-white">{chap.title}</h4>
+                        <p className="text-[10px] text-slate-400 truncate">{chap.subtitle}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Controls & Timeline Bar */}
+          <div className="relative z-30 p-4 md:p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent flex flex-col gap-3">
+            {/* Timeline Progress Bar */}
+            <div 
+              onClick={handleSeek}
+              className="w-full h-3 bg-white/10 hover:bg-white/20 rounded-full overflow-hidden cursor-pointer relative group transition-all"
+            >
+              <div 
+                className="h-full bg-gradient-to-r from-amber-500 via-amber-400 to-amber-300 transition-all duration-75 relative"
+                style={{ width: progress + '%' }}
+              >
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-[0_0_10px_white] opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handlePrev}
+                  className="w-10 h-10 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
+                  title="Föregående kapitel (Vänsterpil)"
+                >
+                  <Icon name="chevronLeft" className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={togglePlay}
+                  className="px-5 h-10 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 text-black font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:scale-105 transition-transform shadow-[0_0_20px_rgba(245,158,11,0.4)] cursor-pointer"
+                >
+                  <Icon name={isPlaying ? "pause" : "play"} className="w-4 h-4 fill-black" />
+                  <span>{isPlaying ? 'Pausa' : 'Spela'}</span>
+                </button>
+
+                <button
+                  onClick={handleNext}
+                  className="w-10 h-10 rounded-2xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
+                  title="Nästa kapitel (Högerpil)"
+                >
+                  <Icon name="chevronRight" className="w-5 h-5" />
+                </button>
+
+                <span className="text-xs font-mono text-slate-300 ml-2">
+                  {formatTime(currentTime)} / {formatTime(duration)}
+                </span>
+              </div>
+
+              {/* Quick Chapter Selector Pills */}
+              <div className="hidden lg:flex items-center gap-2">
+                {chapters.map((c, i) => (
+                  <button
+                    key={c.id}
+                    onClick={() => setCurrentIdx(i)}
+                    className={"px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer " + (i === currentIdx ? 'bg-amber-500 text-black shadow-[0_0_15px_rgba(245,158,11,0.5)]' : 'bg-white/5 text-slate-400 hover:text-white hover:bg-white/10')}
+                  >
+                    0{i + 1} {c.title.split(' ')[0]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     // --- MAIN REACT APPLICATION ---
     function App() {
       // Always initialize directly from the exported data
@@ -932,6 +1296,7 @@
       const [showKeynote, setShowKeynote] = useState(false);
       const [keynoteStartSlide, setKeynoteStartSlide] = useState(0);
       const [showCompanyCollage, setShowCompanyCollage] = useState(false);
+      const [isDynastyShowreelOpen, setIsDynastyShowreelOpen] = useState(false);
 
       useEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
@@ -954,6 +1319,10 @@
 
       if (showKeynote && activeModel) {
         return <KeynotePresentation model={activeModel} initialSlide={keynoteStartSlide} onClose={() => setShowKeynote(false)} />;
+      }
+
+      if (isDynastyShowreelOpen) {
+        return <DynastyShowreel agency={agency} onClose={() => setIsDynastyShowreelOpen(false)} />;
       }
 
       return (
@@ -1052,7 +1421,16 @@
                   </button>
                 </div>
 
-                <button onClick={() => window.print()} className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#14161d] border border-[#2a2d35] hover:border-[var(--theme-color)] text-slate-300 hover:text-white transition-all text-[10px] font-black uppercase tracking-widest">
+                <button 
+                  onClick={() => setIsDynastyShowreelOpen(true)} 
+                  className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-amber-500/20 to-amber-400/10 border border-amber-500/50 hover:border-amber-400 text-amber-300 hover:text-white transition-all text-[10px] font-black uppercase tracking-widest shadow-[0_0_20px_rgba(245,158,11,0.2)] cursor-pointer"
+                  title="Spela alla videopresentationer i en sammanhängande bioupplevelse med ljud"
+                >
+                  <Icon name="film" className="w-4 h-4 text-amber-400" />
+                  <span className="hidden sm:inline">Familje-Showreel</span>
+                </button>
+
+                <button onClick={() => window.print()} className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-[#14161d] border border-[#2a2d35] hover:border-[var(--theme-color)] text-slate-300 hover:text-white transition-all text-[10px] font-black uppercase tracking-widest cursor-pointer">
                   <Icon name="printer" className="w-4 h-4" />
                   <span>PDF</span>
                 </button>
@@ -1071,7 +1449,7 @@
                           <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--theme-color)' }} />
                           <span className="text-[10px] font-black uppercase tracking-widest" style={{ color: 'var(--theme-color)' }}>Aktiv Agentur</span>
                         </div>
-                        <button onClick={() => window.print()} className="px-3 py-1.5 rounded-xl bg-[#0a0b0e] border border-[#2a2d35] hover:border-[var(--theme-color)] text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white flex items-center gap-1.5">
+                        <button onClick={() => window.print()} className="px-3 py-1.5 rounded-xl bg-[#0a0b0e] border border-[#2a2d35] hover:border-[var(--theme-color)] text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-white flex items-center gap-1.5 cursor-pointer">
                           <Icon name="printer" className="w-3 h-3" /> PDF
                         </button>
                       </div>
@@ -1100,15 +1478,36 @@
                         <p className="text-sm text-gray-300 leading-relaxed font-medium italic">"{agency.description}"</p>
                       </div>
 
+                      {/* Left Column Quick Showreel Trigger */}
+                      <div className="pt-4 border-t border-[#1f222a] mt-4">
+                        <button
+                          onClick={() => setIsDynastyShowreelOpen(true)}
+                          className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-purple-500/10 to-pink-500/15 border border-amber-500/40 hover:border-amber-400 text-slate-200 hover:text-white transition-all shadow-[0_0_20px_rgba(245,158,11,0.15)] group cursor-pointer"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+                              <Icon name="film" className="w-4 h-4" />
+                            </div>
+                            <div className="text-left">
+                              <span className="text-[9px] font-black uppercase tracking-widest text-amber-400 block">Aura-Dynastin</span>
+                              <span className="text-xs font-black uppercase tracking-tight text-white">Familje-Showreel</span>
+                            </div>
+                          </div>
+                          <div className="w-7 h-7 rounded-full bg-amber-500/20 group-hover:bg-amber-500 group-hover:text-black text-amber-400 flex items-center justify-center transition-all">
+                            <Icon name="play" className="w-3.5 h-3.5" />
+                          </div>
+                        </button>
+                      </div>
+
                       {allCompanyMedia.length > 0 && (
-                        <div className="pt-4 border-t border-[#1f222a] mt-6">
+                        <div className="pt-4 border-t border-[#1f222a] mt-4">
                           <button 
                             onClick={() => setShowCompanyCollage(!showCompanyCollage)}
                             className="text-xs font-bold text-slate-300 hover:text-white transition-colors flex items-center gap-2 group cursor-pointer text-left w-full"
                           >
                             <Icon name="image" className="w-3.5 h-3.5" style={{ color: 'var(--theme-color)' }} />
                             <span className="underline decoration-slate-600 underline-offset-4 group-hover:decoration-[var(--theme-color)]">
-                              {showCompanyCollage ? 'Dölj företagskollage' : `Visa företagskollage (${allCompanyMedia.length} st)`}
+                              {showCompanyCollage ? 'Dölj företagskollage' : 'Visa företagskollage (' + allCompanyMedia.length + ' st)'}
                             </span>
                             <span className="ml-auto">
                               <Icon name={showCompanyCollage ? "chevronUp" : "chevronDown"} className="w-3.5 h-3.5 text-slate-500" />
@@ -1120,7 +1519,39 @@
                   </div>
 
                   {/* Right Column: Roster & Models */}
-                  <div className="xl:col-span-8 flex flex-col gap-12">
+                  <div className="xl:col-span-8 flex flex-col gap-8">
+                    {/* Dynasty Showreel Hero Card */}
+                    <div className="bg-gradient-to-r from-amber-950/40 via-[#161d2b] to-pink-950/40 rounded-[3rem] p-6 md:p-8 border border-amber-500/30 hover:border-amber-400/60 transition-all shadow-[0_0_35px_rgba(245,158,11,0.12)] flex flex-col md:flex-row items-center justify-between gap-6 group">
+                      <div className="flex items-center gap-5">
+                        <div className="w-14 h-14 rounded-3xl bg-amber-500/15 border border-amber-400/30 flex items-center justify-center text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.25)] group-hover:scale-105 transition-transform flex-shrink-0">
+                          <Icon name="film" className="w-7 h-7" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                              Aura-Dynastin • Cinema Mode
+                            </span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                              HQ + 4 Modeller
+                            </span>
+                          </div>
+                          <h2 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter text-white drop-shadow-md">
+                            Familje-Showreel
+                          </h2>
+                          <p className="text-xs md:text-sm text-slate-300 font-medium mt-1">
+                            Spela alla videopresentationer i följd med fullt ljud (HQ, Astrail 26 år, Inga 36 år, Bodil 21 år, Rosie 32 år).
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setIsDynastyShowreelOpen(true)}
+                        className="w-full md:w-auto px-7 py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black font-black text-xs uppercase tracking-widest shadow-[0_0_30px_rgba(245,158,11,0.4)] flex items-center justify-center gap-2.5 cursor-pointer whitespace-nowrap transition-transform hover:scale-105"
+                      >
+                        <Icon name="play" className="w-4 h-4" />
+                        <span>Starta Showreel</span>
+                      </button>
+                    </div>
+
                     {agency.presentationVideoUrl && (
                       <div className="bg-gradient-to-br from-[#1f222a] to-[#0f1115] rounded-[3rem] p-4 border border-[#2a2d35] shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
                         <div className="rounded-[2.5rem] overflow-hidden relative border border-[#1f222a] aspect-video">
